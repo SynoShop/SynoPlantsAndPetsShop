@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Syno's Plants &amp; Pets Shop 🌿</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #e0e0e0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  body.light-mode {
+    background-color: #eaeaea;
+    color: #222;
+  }
+  header {
+    text-align: center;
+    padding: 20px;
+  }
+  header img {
+    max-width: 450px;
+    width: 90%;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.3));
+    border-radius: 12px;
+    transition: filter 0.3s;
+  }
+  body.light-mode header img {
+    filter: drop-shadow(0 0 10px rgba(50,50,50,0.3));
+  }
+  .section { padding: 30px; max-width: 1200px; margin: 0 auto; }
+  h2 { text-align: center; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.6); transition: text-shadow 0.3s; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .card {
+    background: rgba(10,10,10,0.9);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 40px rgba(255,255,255,0.3);
+  }
+  body.light-mode .card {
+    background: #fff;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 15px rgba(100,100,100,0.3);
+  }
+  .price { font-weight: bold; color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.5); }
+  .robux { font-size: 0.9em; opacity: 0.8; }
+  .button {
+    display: inline-block;
+    background: linear-gradient(145deg, #111, #222);
+    color: #f5f5f5;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+  }
+  .button:hover {
+    background: linear-gradient(145deg, #222, #333);
+    box-shadow: 0 0 25px rgba(255,255,255,0.4);
+  }
+  body.light-mode .button {
+    background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
+    color: #222;
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9em;
+    color: #aaa;
+  }
+  body.light-mode footer {
+    color: #555;
+    border-color: #ccc;
+  }
+  #themeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(145deg, #111, #222);
+    color: #f5f5f5;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 99;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+  }
+  #themeToggle:hover {
+    background: linear-gradient(145deg, #222, #333);
+    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+  }
+  body.light-mode #themeToggle {
+    background: linear-gradient(145deg, #e0e0e0, #c9c9c9);
+    color: #222;
+  }
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 8px rgba(255,255,255,0.2), 0 0 15px rgba(255,255,255,0.1); }
+  50% { box-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.4); }
+  100% { box-shadow: 0 0 8px rgba(255,255,255,0.2), 0 0 15px rgba(255,255,255,0.1); }
+}
+
+/* Apply to Order and Tip buttons */
+a.button[href*="paypal"] {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+</style>
+</head>
+<body>
+<button id="themeToggle">🌓 Toggle Theme</button>
+<header>
+<img alt="Syno's Plants &amp; Pets Shop Logo" class="logo" src="ChatGPT Image Oct 19, 2025, 11_37_59 PM.png"/>
+<br/>
+<a class="button" href="https://discord.gg/PMJAgDQMJa" target="_blank">💬 Join My Discord</a>
+</header>
+<style>
+  header {
+    text-align: center;
+    padding: 20px;
+  }
+
+  header .logo {
+    width: 90%;
+    max-width: 450px;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.8));
+    mix-blend-mode: screen;
+    animation: pulseGlow 3s infinite ease-in-out;
+    transition: all 0.3s ease;
+  }
+
+  @keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
+    50% { filter: drop-shadow(0 0 40px rgba(255,255,255,1)); }
+    100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.6)); }
+  }
+
+  header .logo:hover {
+    transform: scale(1.03);
+  }
+
+  body.light-mode header .logo {
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.4));
+    animation: none;
+  }
+</style>
+<section class="section">
+<h2>🌿 Plants Vs Brainrots Plants For Sale</h2>
+<div class="grid">
+<div class="card"><h3>Mr Carrot Plant</h3><p class="price">$1.00 Each</p><p>Must buy (4)+</p><p class="robux">300 Robux per $1</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Tomatrio Plant</h3><p class="price">$1.15 Each</p><p>Must buy (4)+</p><p class="robux">320 Robux per $1.15</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Shroombino Plant</h3><p class="price">$1.25 Each</p><p>Must buy (4)+</p><p class="robux">335 Robux per $1.25</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Mango Plant</h3><p class="price">$1.35 Each</p><p>Must buy (4)+</p><p class="robux">345 Robux per $1.35</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>King Limone Plant</h3><p class="price">$1.45 Each</p><p>Must buy (4)+</p><p class="robux">355 Robux per $1.45</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+</div>
+</section>
+<section class="section">
+<h2>🐾 Grow a Garden Pets For Sale</h2>
+<div class="grid">
+<div class="card"><h3>Red Kitsune</h3><p class="price">$25 Each</p><p>Cash Only</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Raccoon</h3><p class="price">$15 Each</p><p>Cash Only</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Spinosaurus</h3><p class="price">$13 Each</p><p class="robux">4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Disco Bee</h3><p class="price">$13 Each</p><p class="robux">3.8k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Butterfly</h3><p class="price">$11 Each</p><p class="robux">3.5k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>T-Rex</h3><p class="price">$11 Each</p><p class="robux">3.5k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Fennec Fox</h3><p class="price">$10 Each</p><p class="robux">2.8k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Dragonfly</h3><p class="price">$9 Each</p><p class="robux">2.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Queen Bee</h3><p class="price">$9 Each</p><p class="robux">2.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Mimic Octopus</h3><p class="price">$9 Each</p><p class="robux">2.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Golden Goose</h3><p class="price">$7 Each</p><p class="robux">1.5k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Lobster Thermidor</h3><p class="price">$6 Each</p><p class="robux">1.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Cockatrice</h3><p class="price">$6 Each</p><p class="robux">1.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>French Fry Ferret</h3><p class="price">$6 Each</p><p class="robux">1.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Tiger</h3><p class="price">$6 Each</p><p class="robux">1.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+<div class="card"><h3>Headless Horseman</h3><p class="price">$9 Each</p><p class="robux">2.4k Robux</p><a class="button" href="https://paypal.me/AlianaQ/7" target="_blank">🛒 Order</a></div>
+</div>
+</section>
+<section class="section" style="border-top: 2px solid rgba(255,255,255,0.2); margin-top: 30px;">
+<div style="background: rgba(10,10,10,0.9); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; box-shadow: 0 0 25px rgba(255,255,255,0.2);">
+<h2>💬 Important Ordering Info</h2>
+<p>Before clicking “Order”, please join our <a href="https://discord.gg/PMJAgDQMJa" style="color:#fff;text-decoration:underline;">Discord community</a>!</p>
+<p>Once inside, type in the server chat that you would like to order, or say “I ordered” after completing your payment.</p>
+<h3>💰 Payment Info:</h3>
+<ul>
+<li>All PayPal payments must be sent through <strong>Friends and Family</strong> to ensure a secure and trusted transaction.</li>
+<li>When ordering through PayPal, please include your <strong>Roblox Username</strong> and <strong>Display Name</strong> in the payment note before sending your payment.</li>
+<li>After completing your payment, please allow a short time to receive a friend request from <strong>SynoGreenGreen</strong> — this confirms your order is being processed.</li>
+<li>Robux payments are accepted through <strong>Pls Donate</strong>, with the standard 30% Roblox fee already included in all prices.</li>
+<li>We also accept <strong>Cash App</strong> as an additional payment method in our Discord server.</li>
+</ul>
+<p>Thank you for supporting <strong>Syno’s Plants &amp; Pets Shop 🌿</strong></p>
+</div>
+</section>
+<section class="section" style="border-top: 2px solid rgba(255,255,255,0.2); margin-top: 40px; text-align: center;">
+<div style="background: rgba(10,10,10,0.9); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; box-shadow: 0 0 25px rgba(255,255,255,0.15); max-width: 700px; margin: 0 auto;">
+<h2 style="color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.6);">💰 Tip Jar</h2>
+<p style="font-size: 1.1em; color: #ddd;">If you’d like to support me, you can leave a tip below! Your generosity helps me keep improving and creating better content for everyone.</p>
+<a class="button" href="https://paypal.me/AlianaQ" style="margin-top: 10px; display: inline-block; background: linear-gradient(145deg, #111, #222); color: #f5f5f5; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; box-shadow: 0 0 15px rgba(255,255,255,0.2); transition: all 0.3s ease;" target="_blank">💸 Send a Tip</a>
+<p style="margin-top: 20px; color: #aaa;">I would appreciate the support — all tips will go toward a new PC ❤️</p>
+</div>
+</section>
+<footer>
+🌱 Trusted Seller • Fast Delivery (5–20 Mins) • Safe Transactions 💚
+</footer>
+<script>
+const toggle = document.getElementById('themeToggle');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+});
+</script>
+</body>
+</html>
