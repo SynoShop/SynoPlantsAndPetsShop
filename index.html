@@ -118,6 +118,52 @@
 a.button[href*="paypal"] {
   animation: pulseGlow 4s infinite ease-in-out;
 }
+
+  body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  body.light-mode h1, 
+  body.light-mode h2, 
+  body.light-mode h3, 
+  body.light-mode h4, 
+  body.light-mode h5, 
+  body.light-mode h6, 
+  body.light-mode p, 
+  body.light-mode li, 
+  body.light-mode strong, 
+  body.light-mode span {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+  body.light-mode a {
+    color: #0044cc !important;
+  }
+  body.light-mode a.button {
+    background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
+    color: #000000 !important;
+  }
+  body.light-mode .card {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ccc;
+  }
+  body.light-mode footer {
+    color: #000000;
+    border-color: #ccc;
+  }
+  body.light-mode input, 
+  body.light-mode textarea {
+    background-color: #fff;
+    color: #000;
+  }
+  body.light-mode #themeToggle {
+    background: linear-gradient(145deg, #e0e0e0, #c9c9c9);
+    color: #000;
+  }
+  body.light-mode #reviewList strong {
+    color: #000 !important;
+  }
 </style>
 </head>
 <body>
@@ -197,7 +243,7 @@ a.button[href*="paypal"] {
 <h3>💰 Payment Info:</h3>
 <ul>
 <li>All PayPal payments must be sent through <strong>Friends and Family</strong> to ensure a secure and trusted transaction.</li>
-<li>When ordering through PayPal, please include your <strong>Roblox Username</strong> and <strong>Display Name</strong> in the payment note before sending your payment.</li>
+<li>When ordering through PayPal, please include your Roblox Username, Display Name, the item you purchased, and the quantity of the item you purchased in the payment note before sending your payment.</li>
 <li>After completing your payment, please allow a short time to receive a friend request from <strong>SynoGreenGreen</strong> — this confirms your order is being processed.</li>
 <li>Robux payments are accepted through <strong>Pls Donate</strong>, with the standard 30% Roblox fee already included in all prices.</li>
 <li>We also accept <strong>Cash App</strong> as an additional payment method in our Discord server.</li>
@@ -213,8 +259,81 @@ a.button[href*="paypal"] {
 <p style="margin-top: 20px; color: #aaa;">I would appreciate the support — all tips will go toward a new PC ❤️</p>
 </div>
 </section>
+<!-- Leave a Review Section -->
+<!-- Leave a Review Section (with star rating) -->
+<section class="section" style="border-top: 2px solid rgba(255,255,255,0.2); margin-top: 40px; text-align: center;">
+<div style="background: rgba(10,10,10,0.9); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; box-shadow: 0 0 25px rgba(255,255,255,0.15); max-width: 700px; margin: 0 auto;">
+<h2 style="color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.6);">📝 Leave a Review</h2>
+<p style="font-size: 1.1em; color: #ddd;">We’d love to hear from you! Share your experience after purchasing from Syno’s Plants &amp; Pets Shop 🌿</p>
+<form id="reviewForm" style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+<input id="name" name="name" placeholder="Your Name" required="" style="padding: 10px; width: 80%; border-radius: 8px; border: none; outline: none; font-size: 1em;" type="text"/>
+<div id="starRating" style="display: flex; gap: 5px; font-size: 1.5em; cursor: pointer;">
+<span data-star="1">⭐</span>
+<span data-star="2">⭐</span>
+<span data-star="3">⭐</span>
+<span data-star="4">⭐</span>
+<span data-star="5">⭐</span>
+</div>
+<textarea id="review" name="review" placeholder="Write your review here..." required="" rows="4" style="padding: 10px; width: 80%; border-radius: 8px; border: none; outline: none; font-size: 1em;"></textarea>
+<button class="button" type="submit">⭐ Submit Review</button>
+</form>
+<div id="reviewList" style="margin-top: 25px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;"></div>
+<button class="button" id="showMoreBtn" style="margin-top: 15px; display: none;">⬇️ Show More</button>
+</div>
+</section>
+<script>
+let selectedStars = 0;
+
+document.querySelectorAll('#starRating span').forEach(star => {
+  star.addEventListener('click', () => {
+    selectedStars = parseInt(star.getAttribute('data-star'));
+    document.querySelectorAll('#starRating span').forEach((s, i) => {
+      s.style.opacity = i < selectedStars ? '1' : '0.4';
+    });
+  });
+});
+
+document.getElementById("reviewForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const review = document.getElementById("review").value.trim();
+  if (!name || !review || selectedStars === 0) {
+    alert("Please enter your name, review, and select a star rating.");
+    return;
+  }
+
+  const reviewList = document.getElementById("reviewList");
+  const reviewItem = document.createElement("div");
+  reviewItem.style.background = "rgba(255,255,255,0.05)";
+  reviewItem.style.padding = "10px 15px";
+  reviewItem.style.borderRadius = "8px";
+  reviewItem.style.marginTop = "10px";
+
+  let starsHTML = "⭐".repeat(selectedStars) + "☆".repeat(5 - selectedStars);
+  reviewItem.innerHTML = `<strong style='color:#fff;'>${name}</strong> <span style='color:gold;'>${starsHTML}</span><p style='color:#ccc;'>${review}</p>`;
+
+  reviewList.prepend(reviewItem);
+
+  const allReviews = reviewList.querySelectorAll("div");
+  if (allReviews.length > 3) {
+    allReviews.forEach((r, i) => r.style.display = i < 3 ? "block" : "none");
+    document.getElementById("showMoreBtn").style.display = "inline-block";
+  }
+
+  document.getElementById("reviewForm").reset();
+  document.querySelectorAll('#starRating span').forEach(s => s.style.opacity = '1');
+  selectedStars = 0;
+});
+
+document.getElementById("showMoreBtn").addEventListener("click", function() {
+  const reviewList = document.getElementById("reviewList");
+  const hiddenReviews = [...reviewList.querySelectorAll("div")].filter(r => r.style.display === "none");
+  hiddenReviews.forEach(r => r.style.display = "block");
+  this.style.display = "none";
+});
+</script>
 <footer>
-✔️ Trusted Seller • Fast Delivery (5–20 Mins) • Safe Transactions 💚
+🌱 Trusted Seller • Fast Delivery (5–20 Mins) • Safe Transactions 💚
 </footer>
 <script>
 const toggle = document.getElementById('themeToggle');
