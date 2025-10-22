@@ -157,10 +157,6 @@ a.button[href*="paypal"] {
     background-color: #fff;
     color: #000;
   }
-  body.light-mode #themeToggle {
-    background: linear-gradient(145deg, #e0e0e0, #c9c9c9);
-    color: #000;
-  }
   body.light-mode #reviewList strong {
     color: #000 !important;
   }
@@ -172,6 +168,96 @@ a.button[href*="paypal"] {
 <img alt="Syno's Plants &amp; Pets Shop Logo" class="logo" src="ChatGPT Image Oct 19, 2025, 11_37_59 PM.png"/>
 <br/>
 <a class="button" href="https://discord.gg/PMJAgDQMJa" style="display: inline-flex; align-items: center; gap: 8px;" target="_blank"><img alt="Discord Logo" src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" style="width: 22px; height: 22px;"/>Join My Discord</a>
+<br/>
+<div id="halloween-banner" style="
+  text-align:center;
+  font-size:1.2em;
+  font-weight:bold;
+  color:#fff;
+  background: linear-gradient(90deg, #ff6600, #ff9900, #ff6600);
+  padding:10px 15px;
+  margin:15px auto 0;        /* centered */
+  border-radius:10px;
+  box-shadow:0 0 25px rgba(255,150,0,0.6);
+  animation: floatGlow 6s infinite ease-in-out, fadeIn 2s ease-in;
+  display:inline-block;      /* shrink-to-fit */
+  width:fit-content;         /* shrink-to-fit */
+">
+🎃 Halloween Sale! 10% Off All Items Until Nov 1 🎃
+</div>
+<style>
+@keyframes floatGlow {
+  0%, 100% { transform: translateY(0); box-shadow:0 0 25px rgba(255,150,0,0.6); }
+  50% { transform: translateY(-4px); box-shadow:0 0 35px rgba(255,180,0,0.9); }
+}
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+#halloween-banner.fade-out { animation: fadeOut 1s forwards; }
+@keyframes fadeOut { to { opacity: 0; transform: translateY(-10px); } }
+.price s { color:#ff6666; opacity:0.8; margin-right:5px; }
+</style>
+
+<script>
+function applyHalloweenDiscount() {
+  const today = new Date();
+  const endDate = new Date(today.getFullYear(), 10, 1); // November 1
+  const banner = document.getElementById("halloween-banner");
+  const prices = document.querySelectorAll(".price");
+  const robuxPrices = document.querySelectorAll(".robux");
+
+  if (today < endDate) {
+    prices.forEach(p => {
+      const text = p.textContent.trim();
+      const match = text.match(/\$(\d+(\.\d+)?)/);
+      if (match) {
+        const original = parseFloat(match[1]);
+        const discounted = (original * 0.9).toFixed(2);
+        p.innerHTML = `<s>$${original.toFixed(2)}</s> $${discounted} (10% Off)`;
+      }
+    });
+
+    robuxPrices.forEach(r => {
+      const text = r.textContent.trim();
+      const matchK = text.match(/([\d\.]+)k\s*Robux/i);
+      const matchNum = text.match(/(\d+)\s*Robux/i);
+      if (matchK) {
+        const original = parseFloat(matchK[1]);
+        const discounted = (original * 0.9).toFixed(2);
+        r.innerHTML = `<s>${original}k Robux</s> ${discounted}k Robux (10% Off)`;
+      } else if (matchNum) {
+        const original = parseFloat(matchNum[1]);
+        const discounted = Math.round(original * 0.9);
+        r.innerHTML = `<s>${original} Robux</s> ${discounted} Robux (10% Off)`;
+      }
+    });
+
+  } else {
+    if (banner) banner.classList.add("fade-out");
+    setTimeout(() => {
+      if (banner) banner.remove();
+
+      prices.forEach(p => {
+        const match = p.textContent.match(/\$(\d+(\.\d+)?)/);
+        if (match) {
+          p.textContent = `$${parseFloat(match[1]).toFixed(2)} Each`;
+        }
+      });
+
+      robuxPrices.forEach(r => {
+        const matchK = r.textContent.match(/([\d\.]+)k/);
+        const matchNum = r.textContent.match(/(\d+)/);
+        if (matchK) {
+          r.textContent = `${parseFloat(matchK[1])}k Robux`;
+        } else if (matchNum) {
+          r.textContent = `${parseFloat(matchNum[1])} Robux`;
+        }
+      });
+    }, 1000);
+  }
+}
+document.addEventListener("DOMContentLoaded", applyHalloweenDiscount);
+</script>
+
+
 </header>
 <style>
   header {
